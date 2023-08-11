@@ -29,11 +29,15 @@ const Home = () => {
 
 	console.log(songs)
 
-	const traerInfo = () => {
-		fetch("https://playground.4geeks.com/apis/fake/sound/songs")
-			.then((response) => response.json())
-			.then((data) => setSongs(data))
-			.catch((error) => console.log(error))
+	const traerInfo = async () => {
+		try {
+			const response = await fetch("https://playground.4geeks.com/apis/fake/sound/songs")
+			const data = await response.json()
+			setSongs(data)
+		} catch (error) {
+
+		}
+
 	}
 	useEffect(() => {
 		traerInfo()
